@@ -37,3 +37,11 @@ class List:
     def print_reversed(self):
         self.reverse()
         self.print_()
+
+    def append(self, value):
+        if self.head is not None:
+            self.tail.next_ = Node(value, None)
+            self.tail = self.tail.next_
+        else:
+            self.head = Node(value, None)
+            self.tail = self.head
