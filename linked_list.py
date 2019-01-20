@@ -30,8 +30,9 @@ class List:
                 cur.next_ = List(other.value)
                 cur = cur.next_
         elif isinstance(other, list):
-            # todo
-            print("todo")
+            for elem in other:
+                cur.next_ = List(elem)
+                cur = cur.next_
         return self
 
     @property
@@ -57,4 +58,7 @@ list_.print()
 
 tail._value = 0
 tail.print()
+list_.print()
               
+list_ += [7, 8]
+list_.print()
