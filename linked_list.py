@@ -43,6 +43,22 @@ class List:
     def _value(self, value):
         self.value = value
 
+    def __iter__(self):
+        cur = self
+        while cur:
+            yield cur.value
+            cur = cur.next_
+
+    def print_reversed(self):
+        reversed_list = None
+        cur = self
+        while cur:
+            reversed_list = List(cur.value, next_ = reversed_list)
+            cur = cur.next_
+        reversed_list.print()
+
+
+
 
     
 list_ = List(value=1, next_=List(value=2, next_=List(value=3)))
@@ -62,3 +78,9 @@ list_.print()
               
 list_ += [7, 8]
 list_.print()
+
+for elem in list_:
+    print(2 ** elem, end=" ")
+print("")
+
+list_.print_reversed()
