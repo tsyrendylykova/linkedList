@@ -45,3 +45,25 @@ class List:
         else:
             self.head = Node(value, None)
             self.tail = self.head
+
+    def pop(self):
+        if self.head is not None:
+            elem = self.head
+            self.head = self.head.next_
+        else:
+            return None
+
+    def length(self):
+        count = 0
+        curr_node = self.head
+        while curr_node:
+            count += 1
+            curr_node = curr_node.next_
+        return count
+
+    def _value(self, value):
+        if self.head is not None:
+            self.head.value = value
+        else:
+            self.head = Node(value, None)
+            self.tail = self.head
