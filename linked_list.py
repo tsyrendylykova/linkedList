@@ -34,6 +34,14 @@ class List:
             print("todo")
         return self
 
+    @property
+    def _value(self):
+        return self.value
+
+    @_value.setter
+    def _value(self, value):
+        self.value = value
+
 
     
 list_ = List(value=1, next_=List(value=2, next_=List(value=3)))
@@ -44,7 +52,9 @@ list_.print()
 
 tail = List(value=5, next_=List(value=6))
 list_ += tail
-if list_ == None:
-    print('im noen')
 
 list_.print()
+
+tail._value = 0
+tail.print()
+              
