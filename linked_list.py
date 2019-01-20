@@ -1,69 +1,23 @@
-class Node:
-    def __init__(self, value = None, next_ = next):
+class List:
+    def __init__(self, value = None, next_ = None):
         self.value = value
         self.next_ = next_
-
-class List:
-    def __init__(self):
-        self.head = None
-        self.tail = None
-
-    def clear(self):
-        self.__init__()
-
-    def push(self, value):
-        if self.head is not None:
-            self.head = Node(value, self.head)
-        else:
-            self.head = Node(value, None)
-            self.tail = self.head
-
-    def print_(self):
-        curr_node = self.head
-        while curr_node:
-            print(curr_node.value)
-            curr_node = curr_node.next_
-
-    def reverse(self):
-        prev_node = None
-        curr_node = self.head
-        while curr_node:
-            next_node = curr_node.next_
-            curr_node.next_ = prev_node
-            prev_node = curr_node
-            curr_node = next_node
-        self.head = prev_node
-        
-    def print_reversed(self):
-        self.reverse()
-        self.print_()
+    
+    def print(self):
+        cur = self
+        while cur:
+            print(cur.value)
+            cur = cur.next_
 
     def append(self, value):
-        if self.head is not None:
-            self.tail.next_ = Node(value, None)
-            self.tail = self.tail.next_
-        else:
-            self.head = Node(value, None)
-            self.tail = self.head
+        cur = self
+        while cur.next_:
+            cur = cur.next_
+        cur.next_ = List(value, None)
 
-    def pop(self):
-        if self.head is not None:
-            elem = self.head
-            self.head = self.head.next_
-        else:
-            return None
+    
+list_ = List(value=1, next_=List(value=2, next_=List(value=3)))
+list_.print()
 
-    def length(self):
-        count = 0
-        curr_node = self.head
-        while curr_node:
-            count += 1
-            curr_node = curr_node.next_
-        return count
-
-    def _value(self, value):
-        if self.head is not None:
-            self.head.value = value
-        else:
-            self.head = Node(value, None)
-            self.tail = self.head
+list_.append(4)
+list_.print()
