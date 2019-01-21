@@ -57,30 +57,31 @@ class List:
             cur = cur.next_
         reversed_list.print()
 
+def main():
+    list_ = List(value=1, next_=List(value=2, next_=List(value=3)))
+    list_.print()
+
+    list_.append(4)
+    list_.print()
+
+    tail = List(value=5, next_=List(value=6))
+    list_ += tail
+
+    list_.print()
+
+    tail._value = 0
+    tail.print()
+    list_.print()
+            
+    list_ += [7, 8]
+    list_.print()
+
+    for elem in list_:
+        print(2 ** elem, end=" ")
+    print("")
+
+    list_.print_reversed()
 
 
-
-    
-list_ = List(value=1, next_=List(value=2, next_=List(value=3)))
-list_.print()
-
-list_.append(4)
-list_.print()
-
-tail = List(value=5, next_=List(value=6))
-list_ += tail
-
-list_.print()
-
-tail._value = 0
-tail.print()
-list_.print()
-              
-list_ += [7, 8]
-list_.print()
-
-for elem in list_:
-    print(2 ** elem, end=" ")
-print("")
-
-list_.print_reversed()
+if __name__ == '__main__':
+    main()
