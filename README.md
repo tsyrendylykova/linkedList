@@ -6,7 +6,7 @@ Linked List implementation:
 
 - append
 
-- print / reversed print
+- print / reversed print / recursive reversed print
 
 - operator +=
 
