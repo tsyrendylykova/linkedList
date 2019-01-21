@@ -2,7 +2,7 @@ class List:
     def __init__(self, value = None, next_ = None):
         self.value = value
         self.next_ = next_
-    
+
     def print(self):
         cur = self
         while cur:
@@ -10,29 +10,27 @@ class List:
             cur = cur.next_
         print("", flush = True)
 
-    def append(self, value):
+    def get_last_elem(self):
         cur = self
         while cur.next_:
             cur = cur.next_
-        cur.next_ = List(value, None)
+        return cur
+
+    def append(self, value):
+        last_elem = self.get_last_elem()
+        last_elem.next_ = List(value, None)
 
     def __iadd__(self, other):
         if other is None:
             return self
-        cur = self
-        while cur.next_:
-            cur = cur.next_
-        if isinstance(other, List):
-            cur.next_ = List(other.value)
-            cur = cur.next_
-            while other.next_:
-                other = other.next_
-                cur.next_ = List(other.value)
-                cur = cur.next_
-        elif isinstance(other, list):
-            for elem in other:
-                cur.next_ = List(elem)
-                cur = cur.next_
+        try:
+            other_iterator = iter(other)
+            last_elem = self.get_last_elem()
+            for elem in other_iterator:
+                last_elem.next_ = List(elem)
+                last_elem = last_elem.next_
+        except TypeError as te:
+            raise NotImplementedError
         return self
 
     @property
