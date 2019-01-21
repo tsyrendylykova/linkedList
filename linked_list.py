@@ -57,6 +57,14 @@ class List:
             cur = cur.next_
         reversed_list.print()
 
+    def print_reversed_recursive(self):
+        if self.next_ is None:
+            print(self.value, end = " ")
+            return
+        else:
+            self.next_.print_reversed_recursive()
+            print(self.value, end = " ")
+
 def main():
     list_ = List(value=1, next_=List(value=2, next_=List(value=3)))
     list_.print()
@@ -81,6 +89,9 @@ def main():
     print("")
 
     list_.print_reversed()
+
+    list_.print_reversed_recursive()
+    print("")
 
 
 if __name__ == '__main__':
